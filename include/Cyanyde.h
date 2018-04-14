@@ -5,6 +5,10 @@
  * code.
  */
 
+#ifndef cyanyde
 #define cyanyde
-/* version 0.1.0.0. */
-#define KERNEL_VERSION 0x0010000
+/* version 0.1.0. */
+#define KERNEL_VERSION 0x001000
+
+#include "system/pages.h"
+#endif
