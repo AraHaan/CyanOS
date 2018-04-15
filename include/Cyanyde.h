@@ -4,11 +4,10 @@
  * this OS’s name upon building c & c++
  * code.
  */
-
-#ifndef cyanyde
+#ifndef CYANYDE_H
+#define CYANYDE_H
 #define cyanyde
-/* version 0.1.0. */
-#define KERNEL_VERSION 0x001000
-
-#include "system/pages.h"
+#ifdef WITH_KERNEL
+#include "kernel/kernel.h"
+#endif
 #endif
