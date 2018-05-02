@@ -6,7 +6,7 @@
 #define WITH_KERNEL
 #include "../../include/Cyanyde.h"
 
-PAGEDATALIST MakePages(void[] data)
+PAGEDATALIST MakeMemPages(void[] data)
 {
   // make pages by every 4096
   // bytes in the array.

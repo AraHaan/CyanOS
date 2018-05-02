@@ -18,5 +18,5 @@ typedef struct _PAGEDATALIST
 /// returns:
 /// System page list of the
 /// calling process.
-KEXTERN PAGEDATALIST MakePages(void[] data);
+KEXTERN PAGEDATALIST MakeMemPages(void[] data);
 #endif
