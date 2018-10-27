@@ -11,6 +11,8 @@ enum ControlState
   Disabled = 4;
   /* For when the system allows touch screen inputs. */
   Touched = 5;
+  Scrolling = 6;
+  Dragging = 7;
 };
 
 #endif
