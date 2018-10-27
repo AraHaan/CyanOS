@@ -17,5 +17,7 @@ public:
 
   /* control Window Procedure. */
   void WndProc();
+  void OnDraw();
+  void OnPress();
 };
 #endif

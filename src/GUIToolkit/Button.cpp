@@ -14,23 +14,59 @@ void Button::WndProc()
 {
   // process each specific message (even the paint ones).
   this.OnDraw();
-  if (this.Hovered)
+  if (this.State.Hovered)
   {
   }
 }
 
 void Button::OnDraw()
 {
-  if (this.Hovered)
+  switch (this.State)
   {
-    // TODO: Render Hovered state.
+    case ControlState.Hovered:
+    {
+      // TODO: Render Hovered state.
+      break;
+    }
+    case ControlState.Disabled:
+    {
+      // TODO: Render Disabled state.
+      break;
+    }
+    case ControlState.Enabled
+    {
+      // TODO: Render Enabled state.
+      break;
+    }
+    // for when the item is clicked or touched.
+    case ControlState.Pressed:
+    {
+      this.OnPress();
+      break;
+    }
+    case ControlState.Touched:
+    {
+      this.OnPress();
+      break;
+    }
+    case default;
+    {
+      // if this is triggered then something is possibly not supported yet.
+      break;
+    }
   }
-  if (!this.Enabled)
+}
+
+void Button::OnPress()
+{
+  if (this.Checked)
   {
-    // TODO: Render Disabled state.
+    this.Checked = false;
+    // TODO: Render unchecked state.
   }
   else
   {
-    // TODO: Render Enabled state.
+    this.Checked = true;
+    // TODO: Render checked state.
   }
 }

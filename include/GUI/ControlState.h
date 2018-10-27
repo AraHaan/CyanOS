@@ -9,6 +9,8 @@ enum ControlState
   /* Only for implementing a 3 state radio button if the button is desired to have 3 states. */
   PartialyPressed = 3;
   Disabled = 4;
+  /* For when the system allows touch screen inputs. */
+  Touched = 5;
 };
 
 #endif

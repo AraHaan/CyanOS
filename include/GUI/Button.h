@@ -8,6 +8,8 @@
 
 class Button : public Control
 {
+private:
+  bool Checked = false;
 public:
   void Button();
   void ~Button();
