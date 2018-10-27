@@ -2,19 +2,13 @@
  * Cyanyde OS GUI Toolkit.
  * Include file for the button control class.
  */
-#ifndef CYANYDE_GUI_BUTTON
-#define CYANYDE_GUI_BUTTON
+#ifndef CYANYDE_GUI_BUTTON_H
+#define CYANYDE_GUI_BUTTON_H
+#include "Control.h"
 
-class Button
+class Button : public Control
 {
 public:
-  /* controls state images. */
-  bool Hovered;
-  bool Pressed;
-  bool Enabled;
-
-  /* control Window Procedure. */
-  void WndProc();
   void Button();
   void ~Button();
 };

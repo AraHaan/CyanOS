@@ -12,9 +12,18 @@ void Button::~Button()
 
 void Button::WndProc()
 {
+  // process each specific message (even the paint ones).
+  this.OnDraw();
   if (this.Hovered)
   {
-    // TODO: Render Hovered state and maybe deploy a callback (event)?
+  }
+}
+
+void Button::OnDraw()
+{
+  if (this.Hovered)
+  {
+    // TODO: Render Hovered state.
   }
   if (!this.Enabled)
   {
