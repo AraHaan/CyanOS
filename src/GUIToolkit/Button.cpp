@@ -1,27 +1,43 @@
 #include "../../include/GUI/Button.h"
 
-void Button::Button()
+void Button::Button(int width, int height, int x, int y)
 {
-  // TODO: register this control instance to execute it in the process’s main thread (to the process the control belongs to).
+  this.Bounds = new ControlBounds();
+  this.Bounds.SetBounds(width, height, x, y);
+  this.WndProcPtr = WndProc;
 }
 
 void Button::~Button()
 {
-  // TODO: unreguster this control instance.
+  // Delete bounds instance created from this class.
+  delete[] this.Bounds;
 }
 
-void Button::WndProc()
+private void WndProc(Control *control)
 {
   // process each specific message (even the paint ones).
-  this.OnDraw();
-  if (this.State.Hovered)
+  OnDraw(control);
+  // TODO: Call out user added events here.
+  switch (control.State)
   {
+    case ControlState.Hovered:
+    {
+      break;
+    }
+    case ControlState.Pressed:
+    {
+      break;
+    }
+    case ControlState.Touched:
+    {
+      break;
+    }
   }
 }
 
-void Button::OnDraw()
+private void OnDraw(Control *control)
 {
-  switch (this.State)
+  switch (control.State)
   {
     case ControlState.Hovered:
     {
@@ -33,7 +49,7 @@ void Button::OnDraw()
       // TODO: Render Disabled state.
       break;
     }
-    case ControlState.Enabled
+    case ControlState.Enabled:
     {
       // TODO: Render Enabled state.
       break;
@@ -41,12 +57,12 @@ void Button::OnDraw()
     // for when the item is clicked or touched.
     case ControlState.Pressed:
     {
-      this.OnPress();
+      OnPress(control);
       break;
     }
     case ControlState.Touched:
     {
-      this.OnPress();
+      OnPress(control);
       break;
     }
     case default;
@@ -57,16 +73,12 @@ void Button::OnDraw()
   }
 }
 
-void Button::OnPress()
+// No need to recall WndProc here. The system will do it instead.
+private void OnPress(Control *control)
 {
-  if (this.Checked)
+  // TODO: Do not reset this unless the mouse or touch input stops (finger is lifted or from some hardware issue).
+  if (control.State == ControlState.Pressed)
   {
-    this.Checked = false;
-    // TODO: Render unchecked state.
-  }
-  else
-  {
-    this.Checked = true;
-    // TODO: Render checked state.
+    control.State = ControlState.Enabled;
   }
 }

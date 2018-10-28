@@ -16,6 +16,8 @@ public:
 
   int GetXCordinate();
   int GetYCordinate();
+  int GetWidth();
+  int GetHeight();
 };
 
 #endif

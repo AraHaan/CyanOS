@@ -4,6 +4,7 @@
 #include "ControlState.h"
 #include "ControlBounds.h"
 
+// Control base class.
 class Control
 {
 public:
@@ -12,12 +13,12 @@ public:
   /* The bounds of the control. */
   ControlBounds Bounds;
 
-  void Control();
+  typedef void (__stdcall WndProcPtr*)(Control *control);
+
+  void Control(int width, int height, int x, int y);
   void ~Control();
 
   /* control Window Procedure. */
   void WndProc();
-  void OnDraw();
-  void OnPress();
 };
 #endif

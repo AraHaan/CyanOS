@@ -13,6 +13,8 @@ enum ControlState
   Touched = 5;
   Scrolling = 6;
   Dragging = 7;
+  /* When the control's state is set to checked. */
+  Checked = 8;
 };
 
 #endif
