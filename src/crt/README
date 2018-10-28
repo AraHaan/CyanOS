@@ -1,9 +1,0 @@
-This folder contains the source code to the c runtime for this system.
-
-The code must be made in c or asm and linked as an separate file and should never be statically linked.
-
-Must be an shared library like:
-
-libstdc.csl - Cyanyde OS shared library.
-
-Assemblies that are executable similar to windows exe’s must have the '*.cex' extension. These are Cyanyde OS executables.

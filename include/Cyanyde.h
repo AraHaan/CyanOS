@@ -8,6 +8,7 @@
 #define CYANYDE_H
 #define cyanyde
 #ifdef WITH_KERNEL
+#include "types/kerneltypes.h"
 #include "kernel/kernel.h"
 #endif
 #endif
