@@ -17,6 +17,11 @@
 loader:
 	mov $kernel_stack, %esp
 	
+	mov eax, 0x80000000    ; Set the A-register to 0x80000000.
+	cpuid                  ; CPU identification.
+	cmp eax, 0x80000001    ; Compare the A-register with 0x80000001.
+	jb .NoLongMode         ; It is less, there is no long mode.
+	
 	call CallCtors
 	
 	push %eax
