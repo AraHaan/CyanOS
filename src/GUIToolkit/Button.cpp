@@ -65,6 +65,11 @@ private void OnDraw(Control *control)
       OnPress(control);
       break;
     }
+    case ControlState.Invisible:
+    {
+      // render what is under the control now (hiding the control from sight).
+      break;
+    }
     case default;
     {
       // if this is triggered then something is possibly not supported yet.

@@ -15,6 +15,8 @@ enum ControlState
   Dragging = 7;
   /* When the control's state is set to checked. */
   Checked = 8;
+  /* When the control's state is set to invisible. */
+  Invisible = 9;
 };
 
 #endif

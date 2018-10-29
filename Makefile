@@ -34,7 +34,7 @@ objects = obj/kernel/loader.o \
 		obj/kernel/drivers/mouse.o \
 		obj/kernel/kernel.o
 
-run: cynkernel.iso
+run: cynanyde.iso
 	(killall VirtualBox && sleep 1) || true
 	VirtualBox --startvm "Cyanyde" &
 
@@ -47,13 +47,13 @@ obj/kernel/%.o: src/kernel/%.s
 obj/GUIToolkit/%.o: src/GUIToolkit/%.cpp
 	gcc $(GCCPARAMS) -o $@ $<
 
-cynkernel.bin: linker.ld $(objects)
+libcynkernel.so: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 libguitoolkit.so: linker.ld $(guiobjects)
 	ld $(LDPARAMS) -T $< -o $@ $(guiobjects)
 
-cynkernel.iso: cynkernel.bin libguitoolkit.so
+cynanyde.iso: libcynkernel.so libguitoolkit.so
 	mkdir iso
 	mkdir iso/boot
 	mkdir iso/boot/grub
@@ -63,15 +63,15 @@ cynkernel.iso: cynkernel.bin libguitoolkit.so
 	echo 'set default=0' >> iso/boot/grub/grub.cfg
 	echo '' >> iso/boot/grub/grub.cfg
 	echo 'menuentry "Cyanyde" {' >> iso/boot/grub/grub.cfg
-	echo '  multiboot /system/cynkernel.bin' >> iso/boot/grub/grub.cfg
+	echo '  multiboot /system/libcynkernel.so' >> iso/boot/grub/grub.cfg
 	echo '  boot' >> iso/boot/grub/grub.cfg
 	echo '}' >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=$@ iso
 	rm -rf iso
 
-install: cynkernel.bin
-	sudo cp $< /boot/cynkernel.bin
+install: libcynkernel.so
+	sudo cp $< /boot/libcynkernel.so
 
 .PHONY: clean
 clean:
-	rm -rf obj cynkernel.bin libguitoolkit.so cynkernel.iso
+	rm -rf obj libcynkernel.so libguitoolkit.so cynanyde.iso
