@@ -6,6 +6,23 @@ GCCPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-excep
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
+guiobjects = obj/GUIToolkit/Button.o \
+			obj/GUIToolkit/CheckBox.o \
+			obj/GUIToolkit/CheckBox.o \
+			obj/GUIToolkit/Control.o \
+			obj/GUIToolkit/DropDownBox.o \
+			obj/GUIToolkit/Label.o \
+			obj/GUIToolkit/ListBox.o \
+			obj/GUIToolkit/Panel.o \
+			obj/GUIToolkit/PictureBox.o \
+			obj/GUIToolkit/ProgressBar.o \
+			obj/GUIToolkit/RadioButton.o \
+			obj/GUIToolkit/TextBox.o \
+			obj/GUIToolkit/Theme.o \
+			obj/GUIToolkit/Window.o \
+			obj/GUIToolkit/WindowCommandButtons.o \
+			obj/GUIToolkit/WindowFrame.o
+
 objects = obj/kernel/loader.o \
 		obj/kernel/gdt.o \
 		obj/kernel/drivers/driver.o \
@@ -27,19 +44,26 @@ obj/kernel/%.o: src/kernel/%.cpp
 obj/kernel/%.o: src/kernel/%.s
 	as $(ASPARAMS) -o $@ $<
 
+obj/GUIToolkit/%.o: src/GUIToolkit/%.cpp
+	gcc $(GCCPARAMS) -o $@ $<
+
 cynkernel.bin: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
-cynkernel.iso: cynkernel.bin
+libguitoolkit.so: linker.ld $(guiobjects)
+	ld $(LDPARAMS) -T $< -o $@ $(guiobjects)
+
+cynkernel.iso: cynkernel.bin libguitoolkit.so
 	mkdir iso
-	mkdir iso/boot/
+	mkdir iso/boot
 	mkdir iso/boot/grub
-	cp $< iso/boot/
+	mkdir iso/system
+	cp $< iso/system/
 	echo 'set timeout=0' >> iso/boot/grub/grub.cfg
 	echo 'set default=0' >> iso/boot/grub/grub.cfg
 	echo '' >> iso/boot/grub/grub.cfg
 	echo 'menuentry "Cyanyde" {' >> iso/boot/grub/grub.cfg
-	echo '  multiboot /boot/cynkernel.bin' >> iso/boot/grub/grub.cfg
+	echo '  multiboot /system/cynkernel.bin' >> iso/boot/grub/grub.cfg
 	echo '  boot' >> iso/boot/grub/grub.cfg
 	echo '}' >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=$@ iso
@@ -50,4 +74,4 @@ install: cynkernel.bin
 
 .PHONY: clean
 clean:
-	rm -rf obj cynkernel.bin cynkernel.iso
+	rm -rf obj cynkernel.bin libguitoolkit.so cynkernel.iso
