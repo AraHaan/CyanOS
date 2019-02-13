@@ -1,11 +1,11 @@
 /*
  * kernel.cpp
- * Cyanyde OS kernel code file.
+ * CyanOS kernel code file.
  * This file implements most or parts of the kernel.
  */
 #define WITH_KERNEL
 #define KERNEL_BUILD
-#include "../../include/Cyanyde.h"
+#include "../../include/CyanOS.h"
 
 // TODO: Write everything.
 
@@ -125,7 +125,7 @@ KEXTERN void CallCtors()
 
 KEXTERN void InitKernel(const void* multiboot_structure, uint32_t magicnumber)
 {
-	k_printf("Welcome to Cyanyde, a free an open source operating system.\n");
+	k_printf("Welcome to CyanOS, a free and open source operating system.\n");
 	k_printf("-----------------------------------------------------------\n");
 	k_printf("Initializing Global Descriptor Table...\n");
 	GlobalDescriptorTable gdt;

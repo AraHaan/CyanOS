@@ -4,7 +4,7 @@
  */
 #define WITH_KERNEL
 #define KERNEL_BUILD
-#include "../../../include/Cyanyde.h"
+#include "../../../include/CyanOS.h"
 
 // TODO: Add kernel function that makes the os able to process all keyboard inputs for all processes.
 

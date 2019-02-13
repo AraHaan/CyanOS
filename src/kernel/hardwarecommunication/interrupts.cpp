@@ -1,11 +1,11 @@
 /*
- * kernel.cpp
- * Cyanyde OS kernel code file.
+ * interrupts.cpp
+ * CyanOS kernel interrupts code file.
  * This file implements most or parts of the kernel.
  */
 #define WITH_KERNEL
 #define KERNEL_BUILD
-#include "../../../include/Cyanyde.h"
+#include "../../../include/CyanOS.h"
 
 void k_printf(int8_t* str);
 

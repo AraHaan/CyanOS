@@ -17,16 +17,22 @@
 loader:
 	mov $kernel_stack, %esp
 	
-	mov eax, 0x80000000    ; Set the A-register to 0x80000000.
-	cpuid                  ; CPU identification.
-	cmp eax, 0x80000001    ; Compare the A-register with 0x80000001.
-	jb .NoLongMode         ; It is less, there is no long mode.
+	# commented out until I can fully get
+	# long mode to work on x86_64 cpu's on a single OS build target.
+	# mov %eax, 0x80000000    # Set the A-register to 0x80000000.
+	# cpuid                  # CPU identification.
+	# cmp %eax, 0x80000001    # Compare the A-register with 0x80000001.
+	# jb .NoLongMode         # It is less, there is no long mode.
 	
 	call CallCtors
 	
 	push %eax
 	push %ebx
 	call InitKernel
+
+
+# NoLongMode:
+# 	
 
 
 _stop:

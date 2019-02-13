@@ -1,16 +1,16 @@
 /*
- * Cyanyde OS GUI Toolkit.
+ * CyanOS GUI Toolkit.
  * Include file for the button control class.
  */
-#ifndef CYANYDE_GUI_BUTTON_H
-#define CYANYDE_GUI_BUTTON_H
+#ifndef CYANOS_GUI_BUTTON_H
+#define CYANOS_GUI_BUTTON_H
 #include "Control.h"
 
 class Button : public Control
 {
 public:
-  void Button(int width, int height, int x, int y);
-  void ~Button();
+  Button(int width, int height, int x, int y);
+  ~Button();
 };
 
 #endif

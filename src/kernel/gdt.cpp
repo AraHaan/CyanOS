@@ -4,7 +4,7 @@
  */
 #define WITH_KERNEL
 #define KERNEL_BUILD
-#include "../../include/Cyanyde.h"
+#include "../../include/CyanOS.h"
 
 GlobalDescriptorTable::GlobalDescriptorTable()
 : nullSegmentSelector(0, 0, 0),

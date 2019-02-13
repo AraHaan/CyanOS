@@ -1,10 +1,10 @@
 /*
  * port.cpp
- * Cyanyde OS Hardware Ports code file.
+ * CyanOS Hardware Ports code file.
  */
 #define WITH_KERNEL
 #define KERNEL_BUILD
-#include "../../../include/Cyanyde.h"
+#include "../../../include/CyanOS.h"
 
 Port::Port(uint16_t portnumber)
 {

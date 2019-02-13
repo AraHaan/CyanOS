@@ -1,16 +1,17 @@
 #include "../../include/GUI/Button.h"
 
-void Button::Button(int width, int height, int x, int y)
+Button::Button(int width, int height, int x, int y)
 {
-  this.Bounds = new ControlBounds();
-  this.Bounds.SetBounds(width, height, x, y);
-  this.WndProcPtr = WndProc;
+  // initialize the members using the base constructor.
+  base.Control(width, height, x, y);
+
+  base->WndProcPtr = WndProc;
 }
 
-void Button::~Button()
+Button::~Button()
 {
-  // Delete bounds instance created from this class.
-  delete[] this.Bounds;
+  // destroy the members in the base class using the base destructor.
+  base.~Control();
 }
 
 private void WndProc(Control *control)

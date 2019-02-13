@@ -1,5 +1,17 @@
 #include "../../include/GUI/Control.h"
 
+Control::Control(int width, int height, int x, int y)
+{
+  this.Bounds = new ControlBounds();
+  this.Bounds.SetBounds(width, height, x, y);
+}
+
+Control::~Control()
+{
+  // Delete bounds instance created from this class.
+  delete[] this.Bounds;
+}
+
 Control::ChangeVisibility()
 {
   if (this.State != ControlState.Invisible)

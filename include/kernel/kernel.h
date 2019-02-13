@@ -1,5 +1,5 @@
 /*
- * Cyanyde OS main kernel include file.
+ * CyanOS main kernel include file.
  */
 #ifndef KERNEL_KERNEL_H
 #ifdef __cplusplus
