@@ -10,12 +10,12 @@ class Control
 public:
   /* The state of the control (for which to render on the screen on the control bounds). */
   ControlState State;
-  /* The previous state of the control (only used when State is set to invisible).
+  /* The previous state of the control (only used when State is set to invisible). */
   ControlState PrevState;
   /* The bounds of the control. */
   ControlBounds Bounds;
 
-  typedef void (__stdcall WndProcPtr*)(Control *control);
+  typedef void (__stdcall WndProcPtr*)(Control &control);
 
   /* Changes the visubility of the control to invisible if it is visible. If not then makes it visible again at the previous state. */
   void ChangeVisibility();

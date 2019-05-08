@@ -29,5 +29,5 @@ Control::ChangeVisibility()
 Control::WndProc()
 {
   # call the wndproc pointer of the control using the instance of the control.
-  this.WndProcPtr(&this);
+  this.WndProcPtr(this);
 }
