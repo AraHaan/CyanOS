@@ -17,11 +17,14 @@ PAGEDATALIST MakeMemPages(void[] data)
     PAGEDATA pdata;
     for (int i = 0; i < page; i++)
     {
-      pdata.data[i] = data[i];
-      if (i == page)
+      if (i < sizeof(data))
       {
-        page_num++;
-        pagelist.page[page_num] = pdata;
+        pdata.data[i] = data[i];
+        if (i == page)
+        {
+          page_num++;
+          pagelist.page[page_num] = pdata;
+        }
       }
     }
   }
