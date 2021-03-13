@@ -17,7 +17,7 @@ PAGEDATALIST MakeMemPages(void[] data)
     PAGEDATA pdata;
     for (int i = 0; i < page; i++)
     {
-      if (i < sizeof(data))
+      if ((4096 * page_num) + i < sizeof(data))
       {
         pdata.data[i] = data[i];
         if (i == page)
